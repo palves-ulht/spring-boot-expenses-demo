@@ -1,0 +1,38 @@
+
+### api/expenseType/list
+GET http://localhost:8080/api/expenseType/list
+x-api-token: 12345
+
+### api/validateCredentials
+GET http://localhost:8080/api/validateCredentials
+x-api-token: 12345
+Authorization: Basic admin 123
+
+### api/expense/list
+GET http://localhost:8080/api/expense/list
+x-api-token: 12345
+Authorization: Basic admin 123
+
+### api/expense/new
+POST http://localhost:8080/api/expense/new
+Content-Type: application/json
+x-api-token: 12345
+Authorization: Basic admin 123
+
+{
+    "title": "teste",
+    "type" : 1,
+    "amount" : 20.2
+}
+
+### api/expense/new (error)
+POST http://localhost:8080/api/expense/new
+Content-Type: application/json
+x-api-token: 12345
+Authorization: Basic admin 123
+
+{
+    "title": "teste",
+    "type" : 2,
+    "ammount" : -20.2
+}

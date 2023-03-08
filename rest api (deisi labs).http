@@ -1,0 +1,33 @@
+
+###
+GET https://labs.deisi.ulusofona.pt/expenses/api/expenseType/list
+x-api-token: 12345
+
+### api/expense/list
+GET https://labs.deisi.ulusofona.pt/expenses/api/expense/list
+x-api-token: 12345
+Authorization: Basic admin 123
+
+### api/expense/new
+POST https://labs.deisi.ulusofona.pt/expenses/api/expense/new
+Content-Type: application/json
+x-api-token: 12345
+Authorization: Basic admin 123
+
+{
+    "title": "teste",
+    "type" : 1,
+    "ammount" : 20.2
+}
+
+### api/expense/new (error)
+POST https://labs.deisi.ulusofona.pt/expenses/api/expense/new
+Content-Type: application/json
+x-api-token: 12345
+Authorization: Basic admin 123
+
+{
+    "title": "teste",
+    "type" : 2,
+    "ammount" : -20.2
+}
