@@ -11,6 +11,6 @@ import pt.ulusofona.expenses.repository.ExpenseTypeRepository
 @RequestMapping("/api/expenseType")
 class APIExpenseTypeController(val expenseTypeRepository: ExpenseTypeRepository) {
 
-    @GetMapping("/list")
+    @GetMapping("/list", produces = ["application/json;charset=UTF-8"])
     fun list(model: ModelMap): List<ExpenseType> = expenseTypeRepository.findAll()
 }

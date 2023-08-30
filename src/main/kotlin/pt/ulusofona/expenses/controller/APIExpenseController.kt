@@ -18,7 +18,8 @@ import pt.ulusofona.expenses.repository.ExpenseTypeRepository
 @RestController
 @RequestMapping("/api/expense")
 class APIExpenseController(val expenseRepository: ExpenseRepository,
-                           val expenseTypeRepository: ExpenseTypeRepository) {
+                           val expenseTypeRepository: ExpenseTypeRepository
+) {
 
     // this handler in needed for responding the actual error message when there is a validation error
     @ExceptionHandler(MethodArgumentNotValidException::class)
@@ -27,7 +28,7 @@ class APIExpenseController(val expenseRepository: ExpenseRepository,
         return ResponseEntity.badRequest().body(errorMessage)
     }
 
-    @GetMapping("/list")
+    @GetMapping("/list", produces = ["application/json;charset=UTF-8"])
     fun list(model: ModelMap, authentication: Authentication): List<Expense> =
         expenseRepository.findAllByOwner(authentication.principal as User)
 

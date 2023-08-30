@@ -19,8 +19,21 @@ services:
       DB_URL: jdbc:mysql://db:3306/expenses?connectTimeout=0&socketTimeout=0&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       DB_USERNAME: expenses
       DB_PASSWORD: passwordexpenses
-#      SERVER_SERVLET_CONTEXT_PATH: /expenses
+      JAVA_TOOL_OPTIONS: -Dfile=encoding=UTF8
+    #      SERVER_SERVLET_CONTEXT_PATH: /expenses
     ports:
-      - "8094:8080"
+      - "8080:8080"
     links:
       - db
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2.1
+    restart: always
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+#      PMA_ABSOLUTE_URI: https://labs.deisi.ulusofona.pt/akamprdb/
+      MYSQL_ROOT_PASSWORD: s3cret
+    ports:
+      - "8081:80"
