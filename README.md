@@ -26,7 +26,7 @@ create user 'expenses'@'localhost' identified by 'passwordexpenses';
 
 grant all privileges on expenses.* to 'expenses'@'localhost';
 
-## Tecnical notes
+## Technical notes
 
 ### Spring Security
 
