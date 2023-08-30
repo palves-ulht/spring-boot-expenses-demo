@@ -19,7 +19,6 @@ services:
       DB_URL: jdbc:mysql://db:3306/expenses?connectTimeout=0&socketTimeout=0&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       DB_USERNAME: expenses
       DB_PASSWORD: passwordexpenses
-      JAVA_TOOL_OPTIONS: -Dfile=encoding=UTF8
     #      SERVER_SERVLET_CONTEXT_PATH: /expenses
     ports:
       - "8080:8080"
