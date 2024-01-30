@@ -1,21 +1,5 @@
 ###
 GET {{host}}/api/expenseType/list
-
-HTTP/1.1 200
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 0
-Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Pragma: no-cache
-Expires: 0
-X-Frame-Options: DENY
-Content-Type: application/json
-Transfer-Encoding: chunked
-Date: Wed, 30 Aug 2023 08:40:17 GMT
-Keep-Alive: timeout=60
-Connection: keep-alive
-
-###
-GET {{host}}/api/expenseType/list
 x-api-token: 12345
 
 ### api/expense/list
