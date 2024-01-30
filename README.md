@@ -19,12 +19,13 @@ docker-compose up
 * Go to the ExpensesDemoApplication.kt and run main
 
 ### Setup database
-
+```
 create database expenses;
 
 create user 'expenses'@'localhost' identified by 'passwordexpenses';
 
 grant all privileges on expenses.* to 'expenses'@'localhost';
+```
 
 ## Technical notes
 

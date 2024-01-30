@@ -29,8 +29,23 @@ class APIExpenseController(val expenseRepository: ExpenseRepository,
     }
 
     @GetMapping("/list", produces = ["application/json;charset=UTF-8"])
-    fun list(model: ModelMap, authentication: Authentication): List<Expense> =
-        expenseRepository.findAllByOwner(authentication.principal as User)
+    fun list(@RequestParam(required = false) title: String?,
+             @RequestParam(required = false) typeId: Long?,
+             model: ModelMap, authentication: Authentication): List<Expense> {
+
+        val type = if (typeId != null) expenseTypeRepository.findByIdOrNull(typeId) else null
+        val owner = authentication.principal as User
+
+        if (title != null && type != null) {
+            return expenseRepository.findAllByOwnerAndExpenseTypeAndTitleContainingIgnoreCase(owner, type, title)
+        } else if (title != null) {
+            return expenseRepository.findAllByOwnerAndTitleContainingIgnoreCase(owner, title)
+        } else if (type != null) {
+            return expenseRepository.findAllByOwnerAndExpenseType(owner, type)
+        }
+
+        return expenseRepository.findAllByOwner(owner)
+    }
 
     @PostMapping("/new")
     @ResponseBody
